@@ -19,7 +19,10 @@ mongoose.connect(MONGODB_URI)
     .then(() => console.log('Connected to MongoDB'))
     .catch((err) => console.error('MongoDB connection error:', err));
 
+const authRoutes = require('./routes/authRoutes');
+
 // Routes
+app.use('/auth', authRoutes);
 app.use('/todos', todoRoutes);
 
 app.get('/', (req, res) => {
